@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0c0f">
+  <title>LocalDrop</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">LocalDrop</div>
+      <div class="status"><span></span> Local</div>
+    </header>
+
+    <section id="home" class="screen active">
+      <div class="hero">
+        <p class="eyebrow">PRIVATE FILE SHARING</p>
+        <h1>Share files.<br><span>Keep it local.</span></h1>
+        <p class="sub">Fast device-to-device transfer on the same network.</p>
+      </div>
+
+      <div class="action-grid">
+        <button class="action-card" id="sendBtn">
+          <span class="icon">↑</span>
+          <span><b>Send</b><small>Choose files to share</small></span>
+        </button>
+        <button class="action-card" id="receiveBtn">
+          <span class="icon">↓</span>
+          <span><b>Receive</b><small>Connect with a code</small></span>
+        </button>
+      </div>
+
+      <div class="device-card">
+        <div><small>This device</small><strong id="deviceName">LocalDrop Device</strong></div>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <section id="send" class="screen">
+      <button class="back" data-back>← Back</button>
+      <div class="section-head"><p class="eyebrow">SEND</p><h2>Select files</h2><p>Anything from a photo to a ZIP file.</p></div>
+      <label class="dropzone" for="fileInput">
+        <div class="drop-icon">＋</div>
+        <b>Choose files</b>
+        <span>or drop them here</span>
+        <input id="fileInput" type="file" multiple>
+      </label>
+      <div id="fileList" class="file-list"></div>
+      <button id="startSend" class="primary" disabled>Start sharing</button>
+    </section>
+
+    <section id="host" class="screen">
+      <button class="back" data-back>← Cancel</button>
+      <div class="center">
+        <div class="pulse"><span></span></div>
+        <p class="eyebrow">SERVER ONLINE</p>
+        <h2 class="code" id="code">4827</h2>
+        <p>Waiting for receiver…</p>
+        <div class="info">Temporary host · Same Wi-Fi</div>
+      </div>
+    </section>
+
+    <section id="receive" class="screen">
+      <button class="back" data-back>← Back</button>
+      <div class="section-head"><p class="eyebrow">RECEIVE</p><h2>Enter sender code</h2><p>Use the 4-digit code shown on the sender.</p></div>
+      <input id="codeInput" class="code-input" inputmode="numeric" maxlength="4" placeholder="0000" aria-label="Sender code">
+      <button id="connectBtn" class="primary" disabled>Connect</button>
+      <p id="connectMessage" class="message"></p>
+    </section>
+
+    <section id="transfer" class="screen">
+      <div class="center">
+        <div class="transfer-orb"><span>↑↓</span></div>
+        <p class="eyebrow">DIRECT TRANSFER</p>
+        <h2 id="transferTitle">Connecting…</h2>
+        <p id="transferFile">Establishing peer connection</p>
+        <div class="progress"><i id="progressBar"></i></div>
+        <div class="transfer-meta"><b id="progressText">0%</b><span id="speed">0 MB/s</span></div>
+        <div class="route">SENDER <span>→</span> RECEIVER</div>
+      </div>
+    </section>
+
+    <section id="done" class="screen">
+      <div class="center">
+        <div class="done">✓</div>
+        <p class="eyebrow">COMPLETE</p>
+        <h2>Transfer complete</h2>
+        <p id="doneText">Your session has ended.</p>
+        <button id="doneBtn" class="primary">Done</button>
+      </div>
+    </section>
+
+    <nav class="dock">
+      <button class="dock-btn active" data-home>Home</button>
+      <span>•</span><span>Local only</span>
+    </nav>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
